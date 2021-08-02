@@ -7,15 +7,18 @@
    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
 
+    <title>Registration</title>
+    {% load static %}
    <!-- Bootstrap CSS -->
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/bootstrap-social/bootstrap-social.css">
 <link  rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css"/>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <!-- endbulid -->
-    <title>Registration</title>
+
+
     <style media="screen">
       body{
         padding-top : 100px;
@@ -80,54 +83,54 @@
 
       <div class="card wow slideInDown ">
         <div class="row d-flex">
-          <img class="logo " src="images/logo.png" alt="">
+          <img class="logo " src="{% static 'images/logo.png' %}" alt="">
             <h2 class="d-flex offset-2 justify-content-center align-self-center card-title p-4">Registrartion form</h2>
           </div>
         <div class="card-body">
           <form class="form-horizontal" action="index.html" method="post">
               <div class="form-group row">
                 <label for="first-name" class="col-2">First Name:</label>
-                  <input class="form-control col-10" type="text" name="" value=""  required placeholder="First Name">
+                  <input class="form-control col-10" type="text" name="" value="" id="fname" required placeholder="First Name">
               </div>
               <div class="form-group row">
                 <label for="Last Name" class="col-2">Last Name:</label>
-                  <input class="form-control col-10" type="text" name="" value=""   placeholder="Last Name">
+                  <input class="form-control col-10" type="text" name="" value="" id="lname"  placeholder="Last Name">
               </div>
               <div class="form-group row">
                         <label class="col-2" for="Investment">Gender</label>
-                        <select  class="form-control col-10 " id="Gender" required name="Gender">
-                          <option value="Active">Male</option>
-                          <option value="Deactive">Female</option>
-                          <option value="Deactive">Others</option>
+                        <select  class="form-control col-10 " id="gender" required name="Gender">
+                          <option value="Male">Male</option>
+                          <option value="Female">Female</option>
+                          <option value="Others">Others</option>
                         </select>
               </div>
               <div class="form-group row">
                 <label for="Address" class="col-2">Address:</label>
-                  <input class="form-control col-10" type="address" name="" value=""  required  placeholder="Address">
+                  <input class="form-control col-10" type="address" name="" value="" id="address" required  placeholder="Address">
               </div>
               <div class="form-group row">
                 <label for="Email" class="col-2">Email:</label>
-                  <input class="form-control col-10" type="email" name="" value=""  required placeholder="Email" onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                  <input class="form-control col-10" type="email" name="" value="" id="email" required placeholder="Email" onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
               </div>
               <div class="form-group row">
                 <label for="Phone No." class="col-2">Phone no.</label>
-                  <input class="form-control col-10" type="tel" name="" value=""   required  placeholder="Phone no." onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="phone" pattern="[6-9][0-9]{9}$">
+                  <input class="form-control col-10" type="tel" name="" value="" id="pno"  required  placeholder="Phone no." onblur="this.style.borderColor= this.checkValidity() ? 'green' : 'red'" name="phone" pattern="[6-9][0-9]{9}$">
               </div>
               <div class="form-group row">
                 <label for="Occupation" class="col-2">Occupation:</label>
-                  <input class="form-control col-10" type="text" name="" value=""  required placeholder="Occupation">
+                  <input class="form-control col-10" type="text" name="" value="" id="occupation" required placeholder="Occupation">
               </div>
               <div class="form-group row">
                 <label for="User-name" class="col-2">User Name:</label>
-                  <input class="form-control col-10" type="text" name="" value=""  required placeholder="User Name">
+                  <input class="form-control col-10" type="text" name="" value="" id="uname" required placeholder="User Name">
               </div>
               <div class="form-group row">
                 <label for="password" class="col-2">Password:</label>
-                  <input class="form-control col-10" type="password" name="" value=""  required placeholder="Password">
+                  <input class="form-control col-10" type="password" name="" value="" id="pwd" required placeholder="Password">
               </div>
               <div class="form-group row">
                 <label for="cnf-password" class="col-2">Confirm Password:</label>
-                  <input class="form-control col-10" type="password" name="" value="" placeholder="Confirm Password">
+                  <input class="form-control col-10" type="password" name="" value="" id="pass" placeholder="Confirm Password">
               </div>
               <div class="form-group">
                 <label for="identity" class="col-12 ">Upload your Aadhar card or any identity proof:</label>
@@ -143,7 +146,7 @@
                   </div>
               </div>
               <div class="form-group">
-                  <button class="form-control hv sbt"  name="button"><b>Submit</b> </button>
+                  <button class="form-control hv sbt" name="button" value="send" type="submit" id="sendBtn"><b>Submit</b> </button>
               </div>
 
           </form>
@@ -151,7 +154,71 @@
 
       </div>
 
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js"></script>
 
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-analytics.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.18.0/firebase-storage.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  var firebaseConfig = {
+    apiKey: "AIzaSyB_ijt_J0vpqtYFJEQKDYg901LIY3dfRuA",
+    authDomain: "aashray-f603e.firebaseapp.com",
+    databaseURL: "https://aashray-f603e.firebaseio.com",
+    projectId: "aashray-f603e",
+    storageBucket: "aashray-f603e.appspot.com",
+    messagingSenderId: "156602771228",
+    appId: "1:156602771228:web:2ac4f85923eeb384883cd9",
+    measurementId: "G-YB1M1QD4VS"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+
+     const fname = document.getElementById("fname");
+     const lname = document.getElementById("lname");
+     const gender = document.getElementById("gender");
+     const address = document.getElementById("address");
+     const email = document.getElementById("email");
+     const pno = document.getElementById("pno");
+     const occupation = document.getElementById("occupation");
+     const uname = document.getElementById("uname");
+     const pwd = document.getElementById("pwd");
+     const pass = document.getElementById("pass");
+
+     const database = firebase.database();
+     const usersRef = database.ref('/NeedVolunteerRegistration');
+
+     sendBtn.addEventListener('click', e => {
+     e.preventDefault();
+     usersRef.child(uname.value).set({
+     fname: fname.value,
+     lname: lname.value,
+     gender: gender.value,
+     address: address.value,
+     email: email.value,
+     pno: pno.value,
+     occupation: occupation.value,
+     uname: uname.value,
+     pwd: pwd.value,
+     pass: pass.value,
+     });
+  //alert("Successfully Registered");
+  var r = confirm("Successfully Registered!");
+    if (r == true){
+      window.location.reload();
+    }
+});
+usersRef.on('child_added', snapshot => {
+   console.log('New data has been added to the database !');
+
+ });
+</script>
 
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS. -->
@@ -248,7 +315,7 @@ snap.addEventListener("click", function() {
      });
 
      Single button code of Carousel -->
-<script src="js/scripts.js"></script>
+<script src="{% static 'js/index.js' %}"></script>
 <!-- endbulid -->
 
 

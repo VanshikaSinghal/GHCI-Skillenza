@@ -1,26 +1,26 @@
       // Wow.js
       new WOW().init();
-       
+
         wow = new WOW(
         {
-        boxClass:     'wow',      
+        boxClass:     'wow',
         // default
-        animateClass: 'animated', 
+        animateClass: 'animated',
         // default
-        offset:       0,          
+        offset:       0,
         // default
-        mobile:       true,       
+        mobile:       true,
         // default
-        live:         true        
+        live:         true
         // default
       }
       )
-      wow.init(); 
+      wow.init();
 
 // When the user scrolls down 80px from the top of the document, resize the navbar's padding and the logo's font size
-  
+
 window.onscroll = function() {scrollFunction()};
-  
+
   function scrollFunction() {
     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
       document.getElementById("navbar").style.padding = "10px 5px";
@@ -29,7 +29,7 @@ window.onscroll = function() {scrollFunction()};
       document.getElementById("navbar").style.padding = "30px 10px";
       document.getElementById("logo").style.fontSize = "40px";
     }
-  } 
+  }
 //WhatsHelp.io widget
 
   (function () {
@@ -63,5 +63,5 @@ window.onscroll = function() {scrollFunction()};
       var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
 
   })();
-//WhatsHelp.io widget 
+//WhatsHelp.io widget
 
